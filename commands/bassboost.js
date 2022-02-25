@@ -9,7 +9,7 @@ const levels = {
 module.exports = {
   name: "bassboost",
   description: "Bas artırma ses efektini etkinleştirir.",
-  usage: "<yok|düşük|orta|yüksek>",
+  usage: "[yok|düşük|orta|yüksek]",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
     member: [],
