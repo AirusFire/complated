@@ -8,7 +8,7 @@ module.exports = {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
     member: [],
   },
-  aliases: ["command", "commands", "cmd", "yardım"],
+  aliases: ["command", "commands", "cmd", "yardım", "bilgi"],
   /**
    *
    * @param {import("../structures/DiscordMusicBot")} client
@@ -123,7 +123,7 @@ module.exports = {
   Discord Music Bot Version: v${require("../package.json").version}
   [✨ Support Server](${
     client.botconfig.SupportServer
-  }) | [GitHub](https://github.com/SudhanPlayz/Discord-MusicBot) | [Dashboard](${client.botconfig.Website}) | By [SudhanPlayz](https://github.com/SudhanPlayz)`);
+  }) | [Dashboard](${client.botconfig.Website})`);
       if (!args) return interaction.send(Embed);
       else {
         let cmd =
