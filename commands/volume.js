@@ -3,8 +3,8 @@ const { TrackUtils } = require("erela.js");
 
 module.exports = {
   name: "volume",
-  description: "Mevcut ses seviyesini kontrol edin veya değiştirin 1-100 .",
-  usage: "<ses seviyesi>",
+  description: "Mevcut ses seviyesini kontrol edin veya değiştirin 1-100",
+  usage: "[ses seviyesi]",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
     member: [],
