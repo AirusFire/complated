@@ -4,7 +4,7 @@ const { TrackUtils } = require("erela.js");
 module.exports = {
   name: "seek",
   description: "Şarkıda belirli bir süreye geçebilirsiniz.",
-  usage: "<zaman s/m/h>",
+  usage: "[zaman s/m/h]",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
     member: [],
