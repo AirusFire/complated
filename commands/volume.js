@@ -85,7 +85,7 @@ module.exports = {
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | You must be in a voice channel to use this command."
+          "❌ | Bu komutu kullanmak için bir ses kanalında olmalısınız."
         );
       if (
         guild.me.voice.channel &&
@@ -93,27 +93,27 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          ":x: | **You must be in the same voice channel as me to use this command!**"
+          ":x: | **Bu komutu kullanabilmek için benimle aynı ses kanalında olmalısınız!**"
         );
       let player = await client.Manager.get(interaction.guild_id);
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **Şu anda hiçbir şey çalmıyor...**"
         );
       if (!args[0].value)
         return client.sendTime(
           interaction,
-          `🔉 | Current volume \`${player.volume}\`.`
+          `🔉 | Mevcut ses seviyesi: \`${player.volume}\`.`
         );
       let vol = parseInt(args[0].value);
       if (!vol || vol < 1 || vol > 100)
         return client.sendTime(
           interaction,
-          `**Please choose a number between** \`1 - 100\``
+          `**Lütfen** \`1 - 100\` **arasında bir sayı seçin.**`
         );
       player.setVolume(vol);
-      client.sendTime(interaction, `🔉 | Volume set to \`${player.volume}\``);
+      client.sendTime(interaction, `🔉 | Ses seviyesi \`${player.volume}\` olarak ayarlandı.`);
     },
   },
 };
