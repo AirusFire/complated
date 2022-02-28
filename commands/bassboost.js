@@ -68,7 +68,7 @@ module.exports = {
     options: [
       {
         name: "level",
-        description: `Please provide a bassboost level. Available Levels: low, medium, high, or none`,
+        description: `Lütfen bir bas yükseltme seviyesi sağlayın. Mevcut Seviyeler: düşük, orta, yüksek veya yok`,
         value: "[level]",
         type: 3,
         required: true,
@@ -97,12 +97,12 @@ module.exports = {
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **Şu anda hiçbir şey çalmıyor...**"
         );
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | **You must be in a voice channel to use this command.**"
+          "❌ | **Bu komutu kullanmak için bir ses kanalında olmalısınız.**"
         );
       if (
         guild.me.voice.channel &&
@@ -110,12 +110,12 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          ":x: | **You must be in the same voice channel as me to use this command!**"
+          ":x: | **Bu komutu kullanabilmek için benimle aynı ses kanalında olmalısınız!**"
         );
       if (!args)
         return client.sendTime(
           interaction,
-          "**Please provide a bassboost level. \nAvailable Levels:** `none`, `low`, `medium`, `high`"
+          "**Lütfen bir bas yükseltme seviyesi sağlayın. \nKullanılabilir Düzeyler:** `yok`, `düşük`, `orta`, `yüksek`"
         ); //if the user do not provide args [arguments]
 
       let level = "none";
@@ -129,7 +129,7 @@ module.exports = {
 
       return client.sendTime(
         interaction,
-        `✅ | **Set the bassboost level to** \`${level}\``
+        `✅ | **Bassboost seviyesi ayarlandı. Yeni seviye: ** \`${level}\``
       );
     },
   },
