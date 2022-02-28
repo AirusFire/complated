@@ -101,17 +101,17 @@ module.exports = {
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **Şu anda hiçbir şey çalmıyor...**"
         );
       if (!player.playing)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **Şu anda hiçbir şey çalmıyor...**"
         );
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | **You must be in a voice channel to use this command.**"
+          "❌ | **Bu komutu kullanmak için bir ses kanalında olmalısınız.**"
         );
       if (
         guild.me.voice.channel &&
@@ -119,11 +119,11 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          ":x: | **You must be in the same voice channel as me to use this command!**"
+          ":x: | **Bu komutu kullanabilmek için benimle aynı ses kanalında olmalısınız!**"
         );
       try {
         let embed = new MessageEmbed()
-          .setAuthor(`Song saved: `, client.user.displayAvatarURL())
+          .setAuthor(`Şarkı kaydedildi: `, client.user.displayAvatarURL())
           .setThumbnail(
             `https://img.youtube.com/vi/${player.queue.current.identifier}/mqdefault.jpg`
           )
@@ -132,32 +132,32 @@ module.exports = {
           .setTimestamp()
           .setTitle(`**${player.queue.current.title}**`)
           .addField(
-            `⌛ Duration: `,
+            `⌛ Süre: `,
             `\`${prettyMilliseconds(player.queue.current.duration, {
               colonNotation: true,
             })}\``,
             true
           )
-          .addField(`🎵 Author: `, `\`${player.queue.current.author}\``, true)
+          .addField(`🎵 Yazar: `, `\`${player.queue.current.author}\``, true)
           .addField(
-            `▶ Play it:`,
+            `▶ Oynat:`,
             `\`${
               GuildDB ? GuildDB.prefix : client.botconfig.DefaultPrefix
             }play ${player.queue.current.uri}\``
           )
-          .addField(`🔎 Saved in:`, `<#${interaction.channel_id}>`)
+          .addField(`🔎 Şuraya kaydedildi::`, `<#${interaction.channel_id}>`)
           .setFooter(
-            `Requested by: ${player.queue.current.requester.tag}`,
+            `İsteyen: ${player.queue.current.requester.tag}`,
             player.queue.current.requester.displayAvatarURL({
               dynamic: true,
             })
           );
         user.send(embed);
       } catch (e) {
-        return client.sendTime(interaction, "**:x: Your DMs are disabled**");
+        return client.sendTime(interaction, "**:x: DM'niz devre dışı!**");
       }
 
-      client.sendTime(interaction, "✅ | **Check your DMs!**");
+      client.sendTime(interaction, "✅ | **Dm'ni kontrol et!**");
     },
   },
 };
