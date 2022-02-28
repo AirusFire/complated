@@ -59,17 +59,17 @@ module.exports = {
       if (!player.queue.current)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **Şu anda hiçbir şey çalmıyor...**"
         );
 
       let song = player.queue.current;
       let QueueEmbed = new MessageEmbed()
-        .setAuthor("Currently playing", client.botconfig.IconURL)
+        .setAuthor("Çalmakta", client.botconfig.IconURL)
         .setColor(client.botconfig.EmbedColor)
         .setDescription(`[${song.title}](${song.uri})`)
-        .addField("Requested by", `${song.requester}`, true)
+        .addField("İsteyen", `${song.requester}`, true)
         .addField(
-          "Duration",
+          "Süre",
           `${
             client.ProgressBar(
               player.position,
