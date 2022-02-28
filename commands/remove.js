@@ -64,7 +64,7 @@ module.exports = {
         value: "[track]",
         type: 4,
         required: true,
-        description: "Remove a song from the queue",
+        description: "Sıradan bir şarkıyı kaldırma",
       },
     ],
     /**
@@ -82,12 +82,12 @@ module.exports = {
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **Şu anda hiçbir şey çalmıyor...**"
         );
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | **You must be in a voice channel to use this command.**"
+          "❌ | **Bu komutu kullanmak için bir ses kanalında olmalısınız.**"
         );
       if (
         guild.me.voice.channel &&
@@ -95,20 +95,20 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          ":x: | **You must be in the same voice channel as me to use this command!**"
+          ":x: | **Bu komutu kullanabilmek için benimle aynı ses kanalında olmalısınız!**"
         );
 
       if (!player.queue || !player.queue.length || player.queue.length === 0)
-        return client.sendTime("❌ | **Nothing is playing right now...**");
+        return client.sendTime("❌ | **Şu anda hiçbir şey çalmıyor...**");
       let rm = new MessageEmbed()
         .setDescription(
-          `✅ | **Removed track** \`${Number(args[0])}\` from the queue!`
+          `✅ |\`${Number(args[0])}\`kuyruktan kaldırıldı!`
         )
         .setColor("GREEN");
       if (isNaN(args[0]))
-        rm.setDescription(`**Usage:** \`${GuildDB.prefix}remove [track]\``);
+        rm.setDescription(`**Kullanım:** \`${GuildDB.prefix}remove [Şarkı]\``);
       if (args[0] > player.queue.length)
-        rm.setDescription(`The queue has only ${player.queue.length} songs!`);
+        rm.setDescription(`Sırada yalnızca ${player.queue.length} şarkı var!`);
       await interaction.send(rm);
       player.queue.remove(Number(args[0]) - 1);
     },
