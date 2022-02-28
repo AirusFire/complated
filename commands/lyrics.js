@@ -66,7 +66,7 @@ module.exports = {
         name: "song",
         value: "song",
         type: 3,
-        description: "Enter a song name to search",
+        description: "Aramak için bir şarkı adı girin",
         required: false,
       },
     ],
@@ -84,7 +84,7 @@ module.exports = {
       if (!interaction.data.options && !player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **Şu anda hiçbir şey çalmıyor...**"
         );
 
       SongTitle = interaction.data.options
@@ -95,14 +95,14 @@ module.exports = {
       if (lyrics.length === 0)
         return client.sendTime(
           interaction,
-          `**No lyrics found for -** \`${SongTitle}\``
+          `**Şarkı sözü bulunamadı:** \`${SongTitle}\``
         );
       lyrics = lyrics.split("\n"); //spliting into lines
       let SplitedLyrics = _.chunk(lyrics, 40); //45 lines each page
 
       let Pages = SplitedLyrics.map((ly) => {
         let em = new MessageEmbed()
-          .setAuthor(`Lyrics for: ${SongTitle}`, client.botconfig.IconURL)
+          .setAuthor(`Şarkı Sözleri: ${SongTitle}`, client.botconfig.IconURL)
           .setColor(client.botconfig.EmbedColor)
           .setDescription(ly.join("\n"));
 
