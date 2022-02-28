@@ -77,7 +77,7 @@ module.exports = {
         value: "[position]",
         type: 4,
         required: true,
-        description: "Skips to a specific song in the queue",
+        description: "Sıradaki belirli bir şarkıya atlar.",
       },
     ],
     /**
@@ -95,7 +95,7 @@ module.exports = {
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | **You must be in a voice channel to use this command.**"
+          "❌ | **Bu komutu kullanmak için bir ses kanalında olmalısınız.**"
         );
       if (
         guild.me.voice.channel &&
@@ -103,13 +103,13 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          `:x: | **You must be in the same voice channel as me to use this command!**`
+          `:x: | **Bu komutu kullanabilmek için benimle aynı ses kanalında olmalısınız!**`
         );
       let CheckNode = client.Manager.nodes.get(client.botconfig.Lavalink.id);
       if (!CheckNode || !CheckNode.connected) {
         return client.sendTime(
           interaction,
-          "❌ | **Lavalink node not connected**"
+          "❌ | **Bağlantı Hatası sorun devam ederse yetkiliye ulaşın.**"
         );
       }
 
@@ -124,7 +124,7 @@ module.exports = {
         if (!interaction.data.options)
           return client.sendTime(
             interaction,
-            `**Usage**: \`${GuildDB.prefix}skipto <number>\``
+            `**Kullanım**: \`${GuildDB.prefix}skipto <numara>\``
           );
         let skipTo = interaction.data.options[0].value;
         //if the wished track is bigger then the Queue Size
@@ -134,18 +134,18 @@ module.exports = {
         )
           return client.sendTime(
             interaction,
-            `❌ | That song is not in the queue! Please try again!`
+            `❌ | O şarkı sırada değil! Lütfen tekrar deneyin!`
           );
 
         player.stop(skipTo);
         //Send Success Message
         return client.sendTime(
           interaction,
-          `⏭ Skipped \`${Number(skipTo)}\` songs`
+          `⏭ \`${Number(skipTo)}\` adet şarkı atlandı.`
         );
       } catch (e) {
         console.log(String(e.stack).bgRed);
-        client.sendError(interaction, "Something went wrong.");
+        client.sendError(interaction, "Bir şeyler yanlış gitti.");
       }
     },
   },
