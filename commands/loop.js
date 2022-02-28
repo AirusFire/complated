@@ -67,7 +67,7 @@ module.exports = {
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | You must be in a voice channel to use this command."
+          "❌ | Bu komutu kullanmak için bir ses kanalında olmalısınız."
         );
       if (
         guild.me.voice.channel &&
@@ -75,15 +75,15 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          ":x: | **You must be in the same voice channel as me to use this command!**"
+          ":x: | **Bu komutu kullanabilmek için benimle aynı ses kanalında olmalısınız!**"
         );
 
       if (player.trackRepeat) {
         player.setTrackRepeat(false);
-        client.sendTime(interaction, `🔂 \`Disabled\``);
+        client.sendTime(interaction, `🔂 \`Kapalı\``);
       } else {
         player.setTrackRepeat(true);
-        client.sendTime(interaction, `🔂 \`Enabled\``);
+        client.sendTime(interaction, `🔂 \`Açık\``);
       }
       console.log(interaction.data);
     },
