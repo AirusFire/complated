@@ -45,12 +45,12 @@ module.exports = {
     run: async (client, interaction, args, { GuildDB }) => {
       let embed = new MessageEmbed()
         .setAuthor(
-          "Invite " + client.user.tag + " to your server!",
+          "Sunucunuza " + client.user.tag + " davet edin!",
           client.user.displayAvatarURL()
         )
         .setColor("BLUE")
         .setDescription(
-          `You can invite me by clicking [here](https://discord.com/oauth2/authorize?client_id=${
+          `Beni tıklayarak davet edebilirsiniz. [tıkla](https://discord.com/oauth2/authorize?client_id=${
             client.botconfig.ClientID
           }&permissions=${
             client.botconfig.Permissions
