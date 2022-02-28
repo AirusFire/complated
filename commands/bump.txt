@@ -50,7 +50,7 @@ module.exports = {
         value: "track",
         type: 4,
         required: true,
-        description: "Moves selected track to the front of the queue.",
+        description: "Seçilen parçayı kuyruğun önüne taşır.",
       },
     ],
     /**
@@ -68,15 +68,15 @@ module.exports = {
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **Şu anda hiçbir şey çalmıyor...**"
         );
       if (!args[0].value)
-        return client.sendTime(interaction, "❌ | **Invalid track number.**");
+        return client.sendTime(interaction, "❌ | **Geçersiz parça numarası.**");
 
       // Check if (args[0] - 1) is a valid index
       let trackNum = parseInt(args[0].value - 1);
       if (trackNum < 1 || trackNum > player.queue.length - 1) {
-        return client.sendTime(interaction, "❌ | **Invalid track number.**");
+        return client.sendTime(interaction, "❌ | **Geçersiz parça numarası.**");
       }
 
       // Remove from and shift array
@@ -87,7 +87,7 @@ module.exports = {
         interaction,
         "✅ | **" +
           player.queue[0].title +
-          "** has been moved to the front of the queue."
+          "** sıranın önüne taşındı."
       );
     },
   },
