@@ -178,7 +178,7 @@ module.exports = {
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | **You must be in a voice channel to use this command.**"
+          "❌ | **Bu komutu kullanmak için bir ses kanalında olmalısınız.**"
         );
       if (
         guild.me.voice.channel &&
@@ -186,13 +186,13 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          ":x: | **You must be in the same voice channel as me to use this command!**"
+          ":x: | **Bu komutu kullanabilmek için benimle aynı ses kanalında olmalısınız!**"
         );
       let CheckNode = client.Manager.nodes.get(client.botconfig.Lavalink.id);
       if (!CheckNode || !CheckNode.connected) {
         return client.sendTime(
           interaction,
-          "❌ | **Lavalink node not connected**"
+          "❌ | **Bağlantı Hatası sorun devam ederse yetkiliye ulaşın.**"
         );
       }
       let player = client.Manager.create({
@@ -216,14 +216,14 @@ module.exports = {
             if (!player.queue.current) player.destroy();
             return client.sendError(
               interaction,
-              `:x: | **There was an error while searching**`
+              `:x: | **Arama sırasında bir hata oluştu!**`
             );
 
           case "NO_MATCHES":
             if (!player.queue.current) player.destroy();
             return client.sendTime(
               interaction,
-              ":x: | **No results were found**"
+              ":x: | **Hiçbir sonuç bulunamadı.**"
             );
           case "TRACK_LOADED":
             player.queue.add(TrackUtils.build(Searched.tracks[0], member.user));
@@ -231,7 +231,7 @@ module.exports = {
               player.play();
             return client.sendTime(
               interaction,
-              `**Added to queue:** \`[${Searched.tracks[0].info.title}](${Searched.tracks[0].info.uri}}\`.`
+              `**Sıraya eklendi:** \`[${Searched.tracks[0].info.title}](${Searched.tracks[0].info.uri}}\`.`
             );
 
           case "PLAYLIST_LOADED":
@@ -248,7 +248,7 @@ module.exports = {
               player.play();
             return client.sendTime(
               interaction,
-              `**Playlist added to queue**: \n**${Searched.playlist.name}** \nEnqueued: **${Searched.playlistInfo.length} songs**`
+              `**Oynatma listesi sıraya eklendi**: \n**${Searched.playlist.name}** \nSıraya alındı: **${Searched.playlistInfo.length} şarkı**`
             );
         }
       } else {
@@ -261,7 +261,7 @@ module.exports = {
         } catch (err) {
           return client.sendTime(
             interaction,
-            `:x: | **There was an error while searching:** ${err.message}`
+            `:x: | **Arama sırasında bir hata oluştu:** ${err.message}`
           );
         }
         switch (res.loadType) {
@@ -269,7 +269,7 @@ module.exports = {
             if (!player.queue.current) player.destroy();
             return client.sendTime(
               interaction,
-              ":x: | **No results were found**"
+              ":x: | **Hiçbir sonuç bulunamadı.**"
             );
           case "TRACK_LOADED":
             player.queue.add(res.tracks[0]);
@@ -277,7 +277,7 @@ module.exports = {
               player.play();
             return client.sendTime(
               interaction,
-              `**Added to queue:** \`[${res.tracks[0].title}](${res.tracks[0].uri})\`.`
+              `**Sıraya eklendi:** \`[${res.tracks[0].title}](${res.tracks[0].uri})\`.`
             );
           case "PLAYLIST_LOADED":
             player.queue.add(res.tracks);
@@ -290,7 +290,7 @@ module.exports = {
               player.play();
             return client.sendTime(
               interaction,
-              `**Playlist added to queue**: \n**${res.playlist.name}** \nEnqueued: **${res.playlistInfo.length} songs**`
+              `**Oynatma listesi sıraya eklendi**: \n**${res.playlist.name}** \nSıraya alındı: **${res.playlistInfo.length} şarkı**`
             );
           case "SEARCH_RESULT":
             let max = 10,
@@ -314,11 +314,11 @@ module.exports = {
 
             const resultss = new MessageEmbed()
               .setDescription(
-                `${results}\n\n\t**Type the number of the song you want to play!**\n`
+                `${results}\n\n\t**Çalmak istediğiniz şarkının numarasını yazın!**\n`
               )
               .setColor(client.botconfig.EmbedColor)
               .setAuthor(
-                `Search results for ${search}`,
+                `Arama sonuçları: ${search}`,
                 client.botconfig.IconURL
               );
             interaction.send(resultss);
@@ -331,7 +331,7 @@ module.exports = {
             } catch (e) {
               if (!player.queue.current) player.destroy();
               return awaitchannel.send(
-                "❌ | **You didn't provide a selection**"
+                "❌ | **Bir seçim sağlamadın.**"
               );
             }
 
@@ -339,13 +339,13 @@ module.exports = {
 
             if (first.toLowerCase() === "cancel") {
               if (!player.queue.current) player.destroy();
-              return awaitchannel.send("Cancelled search.");
+              return awaitchannel.send("Arama iptal edildi.");
             }
 
             const index = Number(first) - 1;
             if (index < 0 || index > max - 1)
               return awaitchannel.send(
-                `The number you provided was greater or less than the search total. Usage - \`(1-${max})\``
+                `Sağladığınız sayı, arama toplamından büyük veya küçük. Kullanım - \`(1-${max})\``
               );
             const track = res.tracks[index];
             player.queue.add(track);
@@ -355,15 +355,15 @@ module.exports = {
             } else {
               let SongAddedEmbed = new MessageEmbed();
               SongAddedEmbed.setAuthor(
-                `Added to queue`,
+                `Sıraya eklendi`,
                 client.botconfig.IconURL
               );
               SongAddedEmbed.setThumbnail(track.displayThumbnail());
               SongAddedEmbed.setColor(client.botconfig.EmbedColor);
               SongAddedEmbed.setDescription(`[${track.title}](${track.uri})`);
-              SongAddedEmbed.addField("Author", track.author, true);
+              SongAddedEmbed.addField("Müzisyen", track.author, true);
               SongAddedEmbed.addField(
-                "Duration",
+                "Süre",
                 `\`${prettyMilliseconds(track.duration, {
                   colonNotation: true,
                 })}\``,
@@ -371,7 +371,7 @@ module.exports = {
               );
               if (player.queue.totalSize > 1)
                 SongAddedEmbed.addField(
-                  "Position in queue",
+                  "Sıradaki konumu",
                   `${player.queue.size - 0}`,
                   true
                 );
