@@ -119,13 +119,13 @@ Neyi düzenlemek istersiniz?
     options: [
       {
         name: "prefix",
-        description: "Check the bot's prefix",
+        description: "Botun prefixini kontrol edin",
         type: 1,
         required: false,
         options: [
           {
             name: "symbol",
-            description: "Set the bot's prefix",
+            description: "Botun prefixini ayarla",
             type: 3,
             required: false,
           },
@@ -133,13 +133,13 @@ Neyi düzenlemek istersiniz?
       },
       {
         name: "dj",
-        description: "Check the DJ role",
+        description: "DJ rolünü kontrol edin",
         type: 1,
         required: false,
         options: [
           {
             name: "role",
-            description: "Set the DJ role",
+            description: "DJ rolünü ayarlayın",
             type: 8,
             required: false,
           },
@@ -171,13 +171,13 @@ Neyi düzenlemek istersiniz?
           });
           client.sendTime(
             interaction,
-            `The prefix has now been set to \`${prefix}\``
+            `Prefix \`${prefix}\` olarak ayarlandı. `
           );
         } else {
           //has not prefix
           client.sendTime(
             interaction,
-            `The prefix of this server is \`${GuildDB.prefix}\``
+            `Sunucunun prefixi: \`${GuildDB.prefix}\``
           );
         }
       } else if (config === "djrole") {
@@ -195,7 +195,7 @@ Neyi düzenlemek istersiniz?
           });
           client.sendTime(
             interaction,
-            `Successfully changed the DJ role of this server to ${role.name}`
+            `Bu sunucunun DJ rolü başarıyla değiştirildi. Yeni rol: ${role.name}`
           );
         } else {
           /**
@@ -204,7 +204,7 @@ Neyi düzenlemek istersiniz?
           let role = interaction.guild.roles.cache.get(GuildDB.DJ);
           client.sendTime(
             interaction,
-            `The DJ role of this server is ${role.name}`
+            `Bu sunucunun DJ rolü: ${role.name}`
           );
         }
       }
