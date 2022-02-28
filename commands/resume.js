@@ -70,22 +70,22 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          ":x: | **You must be in the same voice channel as me to use this command!**"
+          ":x: | **Bu komutu kullanabilmek için benimle aynı ses kanalında olmalısınız!**"
         );
 
       let player = await client.Manager.get(interaction.guild_id);
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **Şu anda hiçbir şey çalmıyor...**"
         );
       if (player.playing)
         return client.sendTime(
           interaction,
-          "❌ | **Music is already resumed!**"
+          "❌ | **Müzik zaten yeniden başladı!**"
         );
       player.pause(false);
-      client.sendTime(interaction, "**⏯ Resumed!**");
+      client.sendTime(interaction, "**⏯ Devam ettirildi!**");
     },
   },
 };
