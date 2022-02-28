@@ -86,7 +86,7 @@ module.exports = {
     options: [
       {
         name: "command",
-        description: "Get information on a specific command",
+        description: "Belirli bir komut hakkında bilgi alın",
         value: "command",
         type: 3,
         required: false,
@@ -110,20 +110,20 @@ module.exports = {
 
       let Embed = new MessageEmbed()
         .setAuthor(
-          `Commands of ${client.user.username}`,
+          `${client.user.username}'un Komutları`,
           client.botconfig.IconURL
         )
         .setColor(client.botconfig.EmbedColor)
         .setFooter(
-          `To get info of each command type ${
+          `Her bir komut türü hakkında bilgi almak için ${
             GuildDB ? GuildDB.prefix : client.botconfig.DefaultPrefix
-          }help [Command] | Have a nice day!`
+          }help [komut] `
         ).setDescription(`${Commands.join("\n")}
   
   Discord Music Bot Version: v${require("../package.json").version}
-  [✨ Support Server](${
+  [✨ Destek Sunucusu](${
     client.botconfig.SupportServer
-  }) | [Dashboard](${client.botconfig.Website})`);
+  }) | [Panel](${client.botconfig.Website})`);
       if (!args) return interaction.send(Embed);
       else {
         let cmd =
@@ -134,7 +134,7 @@ module.exports = {
         if (!cmd)
           return client.sendTime(
             interaction,
-            `❌ | Unable to find that command.`
+            `❌ | Bu komut bulunamadı.`
           );
 
         let embed = new MessageEmbed()
@@ -142,17 +142,17 @@ module.exports = {
           .setDescription(cmd.description)
           .setColor("GREEN")
           //.addField("Name", cmd.name, true)
-          .addField("Aliases", cmd.aliases.join(", "), true)
+          .addField("Takma Adlar", cmd.aliases.join(", "), true)
           .addField(
-            "Usage",
+            "Kullanım",
             `\`${GuildDB ? GuildDB.prefix : client.botconfig.DefaultPrefix}${
               cmd.name
             }\`${cmd.usage ? " " + cmd.usage : ""}`,
             true
           )
           .addField(
-            "Permissions",
-            "Member: " +
+            "İzinler",
+            "Üye: " +
               cmd.permissions.member.join(", ") +
               "\nBot: " +
               cmd.permissions.channel.join(", "),
