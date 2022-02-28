@@ -62,14 +62,14 @@ module.exports = {
         value: "track",
         type: 4,
         required: true,
-        description: "Track to move.",
+        description: "Seçilen şarkıyı belirtilen konuma taşır.",
       },
       {
         name: "position",
         value: "track2",
         type: 4,
         required: true,
-        description: "Moves selected track to the specified position.",
+        description: "Seçilen parçayı belirtilen konuma taşır.",
       },
     ],
     /**
@@ -87,22 +87,22 @@ module.exports = {
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **Şu anda hiçbir şey çalmıyor...**"
         );
       if (!args[0].value || !args[1].value)
-        return client.sendTime(interaction, "❌ | **Invalid track number.**");
+        return client.sendTime(interaction, "❌ | **Geçersiz parça numarası.**");
 
       // Check if (args[0] - 1) is a valid index
       let trackNum = parseInt(args[0].value - 1);
       if (trackNum < 1 || trackNum > player.queue.length - 1) {
-        return client.sendTime(interaction, "❌ | **Invalid track number.**");
+        return client.sendTime(interaction, "❌ | **Geçersiz parça numarası.**");
       }
 
       let dest = parseInt(args[1].value - 1);
       if (dest < 1 || dest > player.queue.length - 1) {
         return client.sendTime(
           interaction,
-          "❌ | **Invalid track destination.**"
+          "❌ | **Geçersiz parkur hedefi.**"
         );
       }
 
@@ -114,7 +114,7 @@ module.exports = {
         interaction,
         "✅ | **" +
           track.title +
-          "** has been moved to position " +
+          "** konuma taşındı " +
           (dest + 1) +
           "."
       );
