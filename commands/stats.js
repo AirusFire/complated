@@ -110,7 +110,7 @@ module.exports = {
 
         const embed = new MessageEmbed();
         embed.setColor(client.botconfig.EmbedColor);
-        embed.setTitle(`Stats from \`${client.user.username}\``);
+        embed.setTitle(`\`${client.user.username}\`'un istatistikleri`);
         embed.addFields(
           {
             name: ":ping_pong: Ping",
@@ -118,12 +118,12 @@ module.exports = {
             inline: true,
           },
           {
-            name: ":clock1: Uptime",
+            name: ":clock1: Çalışma sürem",
             value: `┕\`${duration}\``,
             inline: true,
           },
           {
-            name: ":file_cabinet: Memory",
+            name: ":file_cabinet: Kullanılan Ram",
             value: `┕\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(
               2
             )}mb\``,
@@ -133,24 +133,24 @@ module.exports = {
 
         embed.addFields(
           {
-            name: ":homes: Servers",
+            name: ":homes: Sunucu Sayısı",
             value: `┕\`${client.guilds.cache.size}\``,
             inline: true,
           },
           {
-            name: ":busts_in_silhouette: Users",
+            name: ":busts_in_silhouette: Kullanıcı Sayısı",
             value: `┕\`${client.users.cache.size}\``,
             inline: true,
           },
           {
-            name: ":control_knobs: API Latency",
+            name: ":control_knobs: Sistem Gecikmesi",
             value: `┕\`${client.ws.ping}ms\``,
             inline: true,
           }
         );
         embed.addFields(
           {
-            name: ":robot: Version",
+            name: ":robot: Versiyon",
             value: `┕\`v${require("../package.json").version}\``,
             inline: true,
           },
