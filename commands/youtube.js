@@ -65,7 +65,7 @@ __**[YouTube Birlikte'ye Katılın](https://discord.com/invite/${Invite.code})**
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | You must be in a voice channel to use this command."
+          "❌ | Bu komutu kullanmak için bir ses kanalında olmalısınız."
         );
       if (
         !member.voice.channel
@@ -74,7 +74,7 @@ __**[YouTube Birlikte'ye Katılın](https://discord.com/invite/${Invite.code})**
       )
         return client.sendTime(
           interaction,
-          "❌ | **Bot doesn't have Create Invite Permission**"
+          "❌ | **Bot'un Davet Oluşturma İzni yok**"
         );
 
       let Invite = await member.voice.channel.activityInvite(
@@ -82,15 +82,15 @@ __**[YouTube Birlikte'ye Katılın](https://discord.com/invite/${Invite.code})**
       ); //Made using discordjs-activity package
       let embed = new MessageEmbed()
         .setAuthor(
-          "YouTube Together",
+          "YouTube Birlikte",
           "https://cdn.discordapp.com/emojis/749289646097432667.png?v=1"
         )
         .setColor("#FF0000").setDescription(`
-Using **YouTube Together** you can watch YouTube with your friends in a Voice Channel. Click *Join YouTube Together* to join in!
+**YouTube Birlikte**'yi kullanarak YouTube'u arkadaşlarınızla bir Ses Kanalında izleyebilirsiniz. Katılmak için **YouTube Birlikte'ye Katılın**'a tıklayın!
 
-__**[Join YouTube Together](https://discord.com/invite/${Invite.code})**__
+__**[YouTube Birlikte'ye Katılın](https://discord.com/invite/${Invite.code})**__
 
-⚠ **Note:** This only works in Desktop
+⚠ **Note:** Bu yalnızca Masaüstünde çalışır
 `);
       interaction.send(embed.toJSON());
     },
